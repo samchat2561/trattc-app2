@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <%- include('./layouts/admin-head') %>
+    <title>Admin Dashboard</title>
+</head>
+
+<body>
+    <% if(isLoggedIn) { %>
+        <%- include('./layouts/admin-navbar') %>
+        <%- include('./layouts/admin-card') %>
+        <%- include('./layouts/admin-script') %>
+        <!-- <a href="/logout">Logout</a> -->
+        <% } else { %>
+            <a href="/login">Login</a>
+            <a href="/register">Register</a>
+    <% } %>
+</body>
+</html>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Sarabun&display=swap');
+
+    .sarabun-regular {
+        font-family: "Sarabun", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+    }
+</style>

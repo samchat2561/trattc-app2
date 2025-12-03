@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ลงนามถวายพระพร</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.2/css/dataTables.bootstrap5.css">
+    
+</head>
+
+<body>
+
+    <%- include('./layouts/admin-navbar') %>
+
+    <div class="container mt-3 mb-5 sarabun-regular">
+        <div class="row mb-5">
+            <div class="col-md-10 mx-auto">
+                <div class="card shadow">
+                    <img src="../images/prince_pa.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h4 class="card-title"><span
+                                class="badge rounded-pill text-white text-bg-primary">ลงนามถวายพระพร</span></h4>
+                        <p class="card-text">
+                            สมเด็จพระเจ้าลูกเธอ เจ้าฟ้าพัชรกิติยาภา นเรนทิราเทพยวดี กรมหลวงราชสาริณีพัชร มหาวัชรราชธิดา
+                            เป็นพระราชธิดาพระองค์ใหญ่ในพระบาทสมเด็จพระวชิรเกล้าเจ้าอยู่หัว ประสูติแต่พระเจ้าวรวงศ์เธอ
+                            พระองค์เจ้าโสมสวลี กรมหมื่นสุทธนารีนาถ ประสูติเมื่อวันพฤหัสบดี ขึ้น 8 ค่ำ เดือนอ้าย
+                            ปีมะเมีย สัมฤทธิศก จ.ศ. 1340 ตรงกับวันที่ 7 ธันวาคม พ.ศ. 2521 ณ พระที่นั่งอัมพรสถาน
+                            พระราชวังดุสิต
+                        </p>
+                        <p class="text-body font-weight-light mt-4 text-end">
+                            <span class="text-decoration-underline">วิทยาลัยเทคนิคตราด</span>
+                            <a href="https://www.trattc.ac.th/" target="_blank"
+                                class="text-primary text-decoration-none font-weight-bolder">หน้าแรก</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-2">
+
+            <div class="col-md-10 mx-auto">
+                <div class="card shadow">
+                    <div class="card-header">
+                        <h4 class="card-title text-center"><span
+                                class="badge rounded-pill text-white text-bg-primary">ลงนามถวายพระพร</span></h4>
+                    </div>
+
+                    <div class="card-body">
+                        <table id="myTable" class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">ลำดับ</th>
+                                    <th scope="col">รายชื่อผู้ลงนามถวายพระพร</th>
+                                    <th scope="col">หน่วยงาน</th>
+                                    <th scope="col">ตำแหน่ง</th>
+                                    <th scope="col">แก้ไข</th>
+                                    <th scope="col">ลบ</th>
+                                    <!-- <th scope="col">วันที่/เวลา</th> -->
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% let i=0 %>
+                                    <% products.forEach(product=> { %>
+                                        <tr>
+                                            <td>
+                                                <%= i=i+1 %>
+                                            </td>
+                                            <td>
+                                                <%= product.title %>
+                                                    <%= product.name %>
+                                            </td>
+                                            <td>
+                                                <%= product.department %>
+                                            </td>
+                                            <td>
+                                                <%= product.position %>
+                                            </td>
+                                            <td><a href="/products/edit/<%= product.id %>"
+                                                    class="text-decoration-none"><span
+                                                        class="badge rounded-pill text-white text-bg-success">แก้ไข</span></a>
+                                            </td>
+                                            <td><a href="/products/delete/<%= product.id %>"
+                                                    class="text-decoration-none"><span
+                                                        class="badge rounded-pill text-white text-bg-danger">ลบ</span></a>
+                                            </td>
+                                            <!-- <td><%= product.created_at %></td> -->
+                                        </tr>
+                                        <% }) %>
+                            </tbody>
+                        </table>
+                        <p class="text-body font-weight-light mt-4 text-center">ลงนามถวายพระพร
+                            <a href="/products/add" target="_blank" class="text-primary text-decoration-none font-weight-bolder">ลงนาม</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/2.1.2/js/dataTables.js"></script>
+    <script src="https://cdn.datatables.net/2.1.2/js/dataTables.bootstrap5.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script> -->
+    
+    <script>
+        // new DataTable('#myTable');
+        let table = new DataTable('#myTable', {
+            responsive: true
+        });
+
+    </script>
+</body>
+
+</html>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Sarabun&display=swap');
+
+    .sarabun-regular {
+        font-family: "Sarabun", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+    }
+
+    body {
+       /*background-image: url("https://www.solidbackgrounds.com/images/1920x1080/1920x1080-orange-web-solid-color-background.jpg");*/
+        background-color: #ff7f50;
+    }
+</style>
